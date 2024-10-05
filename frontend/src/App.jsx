@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     // Fetch data from Express API
-    fetch('http://localhost:5000/api/message')
+    fetch('http://localhost:5000/api')
       .then(response => response.json())
       .then(data => setMessage(data.message))
       .catch(err => console.error(err));
