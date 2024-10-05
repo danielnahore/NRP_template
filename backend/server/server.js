@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.use(express.static(path.join(__dirname, '../../frontend/client/dist')));
 
 // API route example
 app.get('/api', (req, res) => {
@@ -18,7 +18,7 @@ app.get('/api', (req, res) => {
 
 // The catch-all route to serve React's index.html
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+    res.sendFile(path.join(__dirname, '../../frontend/client/dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
