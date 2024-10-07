@@ -6,5 +6,10 @@ Template of simple web application running in docker containers.
 
 # Usage
 - `docker-compose build` - build whole project
-- `docker-compose up` - start whole project, ui runs on `http://localhost:7000/`
+- `docker-compose up` - start whole project
 - `docker-compose down` - stop whole project
+
+# View
+- frontend runs on `http://localhost:7000/`
+- backend runs on `http://localhost:5000/`
+- postgresql runs on `http://localhost:5432/`
