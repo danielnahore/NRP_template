@@ -1,15 +1,41 @@
-version: '3.3'
+version: '3'
+
 services:
   backend:
-    build:
-      context: ./backend/server
-      dockerfile: Dockerfile
+    build: ./backend
     ports:
-      - "5000:5000"  # Expose Node.js backend on port 5000
+      - "5000:5000"
+    environment:
+      DB_USER: myuser
+      DB_PASSWORD: mypassword
+      DB_NAME: mydatabase
+      DB_HOST: postgres
+      DB_PORT: 5432
+    depends_on:
+      - postgres
 
   frontend:
     build:
-      context: ./frontend/client
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "7000:80"  # Expose Nginx on port 3000
+    environment:
+      DB_USER: myuser
+      DB_PASSWORD: mypassword
+      DB_NAME: mydatabase
+      DB_HOST: postgres
+      DB_PORT: 5432
+    depends_on:
+        - postgres
+
+  postgres:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    volumes:
+      - ./backend/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
