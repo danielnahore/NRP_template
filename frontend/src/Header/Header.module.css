@@ -1,0 +1,24 @@
+h1 {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+header {
+    background-color: #f5e508;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+header h1 {
+    color: black;
+    border: 8px solid black;
+    padding: 6px 12px;
+    display: inline-block;
+    border-radius: 36px;
+}

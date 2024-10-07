@@ -1,6 +1,6 @@
 const express = require('express');
-// const path = require('path');
-// const cors = require('cors');
+const path = require('path');
+const cors = require('cors');
 const { Pool } = require('pg');
 require('dotenv').config();
 
@@ -8,14 +8,14 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // // Enable CORS to allow requests from React
-// app.use(cors());
+app.use(cors());
 
 // // Serve static files from the React app
-// app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // API route example
 app.get('/api', (req, res) => {
-    res.json({ message: 'My name is Daniel Kralik.' });
+    res.json({ message: 'Daniel Králík' });
 });
 
 // PostgreSQL pool connection
@@ -38,10 +38,10 @@ app.get('/api/users', async(req, res) => {
     }
 });
 
-// // The catch-all route to serve React's index.html
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
-// });
+// The catch-all route to serve React's index.html
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import { useEffect, useState } from 'react';
+import Header from './Header/Header';
+import Title from './Title';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -13,9 +14,14 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>{message}</h1>
-    </div>
+    <html>
+      <head>
+        <Title/>
+      </head>
+      <body>
+        <Header message={message}/>
+      </body>
+    </html>
   );
 }
 
